@@ -28,7 +28,7 @@ public class LazySingleton {
     }
 
     /**
-     * 每次调用这个方法都需要保证同步，浪费性能
+     * 每次调用这个方法都需要保证同步，浪费性能  (懒汉式)
      * @return
      */
     public static synchronized LazySingleton getInstance2() {
@@ -39,7 +39,7 @@ public class LazySingleton {
     }
 
     /**
-     * 双重检索，保证只有第一次为空的情况下，才保持同步。
+     * 双重检索，保证只有第一次为空的情况下，才保持同步。 (双重校验锁)
      * @return
      */
     public static LazySingleton getInstance3() {
@@ -54,7 +54,7 @@ public class LazySingleton {
     }
 
     /**
-     *利用了classloader的机制来保证初始化instance时只有一个线程
+     *利用了classloader的机制来保证初始化instance时只有一个线程(静态)
      * @return
      */
     public static LazySingleton getInstance4() {
