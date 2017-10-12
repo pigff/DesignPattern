@@ -11,6 +11,10 @@ import com.lin.designpattern.command.EatCommand;
 import com.lin.designpattern.command.Master;
 import com.lin.designpattern.command.RunCommand;
 import com.lin.designpattern.command.SitCommand;
+import com.lin.designpattern.faced.Air;
+import com.lin.designpattern.faced.Food;
+import com.lin.designpattern.faced.Tv;
+import com.lin.designpattern.faced.WeekDay;
 import com.lin.designpattern.strategy.Animal;
 import com.lin.designpattern.strategy.CatBark;
 import com.lin.designpattern.strategy.DogBark;
@@ -64,5 +68,21 @@ public class MainActivity extends AppCompatActivity {
         Child child = new Child(Child.TYPE, 8, "tony");
         Log.d("MainActivity", child.toString());
         Log.d("MainActivity", new AdultAdapter().getAdult(child).toString());
+        // --------------------- 外观模式 --------------------- //
+        Log.d("MainActivity", "--------------------- 外观模式 --------------------- ");
+        Air air = new Air();
+        Food food = new Food();
+        Tv tv = new Tv();
+        Log.d("MainActivity", "使用外观模式前");
+        tv.openTv();
+        air.openAir();
+        food.eat("乐事薯片");
+
+        tv.closeTv();
+        air.closeAir();
+        Log.d("MainActivity", "使用外观模式后");
+        WeekDay weekDay = new WeekDay(air, food, tv);
+        weekDay.endWeekDay();
+        weekDay.endWeekDay();
     }
 }
