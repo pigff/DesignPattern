@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.lin.designpattern.abstractfactory.AKFactory;
+import com.lin.designpattern.abstractfactory.Amm;
+import com.lin.designpattern.abstractfactory.EigthNightKFactory;
+import com.lin.designpattern.abstractfactory.M416Factory;
+import com.lin.designpattern.abstractfactory.Weapon;
 import com.lin.designpattern.adapter.AdultAdapter;
 import com.lin.designpattern.adapter.Child;
 import com.lin.designpattern.command.Dog;
@@ -15,6 +20,11 @@ import com.lin.designpattern.faced.Air;
 import com.lin.designpattern.faced.Food;
 import com.lin.designpattern.faced.Tv;
 import com.lin.designpattern.faced.WeekDay;
+import com.lin.designpattern.factory.FactoryFood;
+import com.lin.designpattern.factory.MeatFactory;
+import com.lin.designpattern.factory.RiceFactory;
+import com.lin.designpattern.factory.SimpleFactory;
+import com.lin.designpattern.factory.VegetablesFactory;
 import com.lin.designpattern.strategy.Animal;
 import com.lin.designpattern.strategy.CatBark;
 import com.lin.designpattern.strategy.DogBark;
@@ -86,11 +96,41 @@ public class MainActivity extends AppCompatActivity {
         WeekDay weekDay = new WeekDay(air, food, tv);
         weekDay.endWeekDay();
         weekDay.endWeekDay();
-
         // --------------------- 模板方法 --------------------- //
         LucyWeekDayPlan lucyPlan = new LucyWeekDayPlan();
         lucyPlan.schedule();
         TonyWeekDayPlan tonyPlan = new TonyWeekDayPlan();
         tonyPlan.schedule();
+        // --------------------- 工厂方法 --------------------- //
+        // --------------------- 简单工厂 --------------------- //
+        Log.d("MainActivity", "简单工厂");
+        SimpleFactory simpleFactory = new SimpleFactory();
+        FactoryFood simplefood = simpleFactory.createFood(0);
+        simplefood.notice();
+        simplefood = simpleFactory.createFood(1);
+        simplefood.notice();
+        simplefood = simpleFactory.createFood(2);
+        simplefood.notice();
+        Log.d("MainActivity", "工厂方法");
+        simplefood = new RiceFactory().createFood();
+        simplefood.notice();
+        simplefood = new MeatFactory().createFood();
+        simplefood.notice();
+        simplefood = new VegetablesFactory().createFood();
+        simplefood.notice();
+        // --------------------- 抽象工厂 --------------------- //
+        Log.d("MainActivity", "抽象工厂");
+        Amm amm = new AKFactory().createAmm();
+        Weapon weapon = new AKFactory().createWeapon();
+        amm.printName();
+        weapon.printName();
+        amm = new EigthNightKFactory().createAmm();
+        weapon = new EigthNightKFactory().createWeapon();
+        amm.printName();
+        weapon.printName();
+        amm = new M416Factory().createAmm();
+        weapon = new M416Factory().createWeapon();
+        amm.printName();
+        weapon.printName();
     }
 }
