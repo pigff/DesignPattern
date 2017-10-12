@@ -18,6 +18,8 @@ import com.lin.designpattern.faced.WeekDay;
 import com.lin.designpattern.strategy.Animal;
 import com.lin.designpattern.strategy.CatBark;
 import com.lin.designpattern.strategy.DogBark;
+import com.lin.designpattern.template.LucyWeekDayPlan;
+import com.lin.designpattern.template.TonyWeekDayPlan;
 import com.lin.designpattern.watcher.EffortStudent;
 import com.lin.designpattern.watcher.LazyStudent;
 import com.lin.designpattern.watcher.SleepStudent;
@@ -84,5 +86,11 @@ public class MainActivity extends AppCompatActivity {
         WeekDay weekDay = new WeekDay(air, food, tv);
         weekDay.endWeekDay();
         weekDay.endWeekDay();
+
+        // --------------------- 模板方法 --------------------- //
+        LucyWeekDayPlan lucyPlan = new LucyWeekDayPlan();
+        lucyPlan.schedule();
+        TonyWeekDayPlan tonyPlan = new TonyWeekDayPlan();
+        tonyPlan.schedule();
     }
 }
