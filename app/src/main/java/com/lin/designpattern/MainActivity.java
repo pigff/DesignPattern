@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.lin.designpattern.adapter.AdultAdapter;
+import com.lin.designpattern.adapter.Child;
 import com.lin.designpattern.command.Dog;
 import com.lin.designpattern.command.EatCommand;
 import com.lin.designpattern.command.Master;
@@ -56,5 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
         teacher.removeWatcher(sleepStudent);
         teacher.notifyAllWatcher();
+
+        // --------------------- 适配器模式 --------------------- //
+        Log.d("MainActivity", "--------------------- 适配器模式 ---------------------");
+        Child child = new Child(Child.TYPE, 8, "tony");
+        Log.d("MainActivity", child.toString());
+        Log.d("MainActivity", new AdultAdapter().getAdult(child).toString());
     }
 }
