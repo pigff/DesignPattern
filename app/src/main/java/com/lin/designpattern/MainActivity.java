@@ -25,6 +25,8 @@ import com.lin.designpattern.factory.MeatFactory;
 import com.lin.designpattern.factory.RiceFactory;
 import com.lin.designpattern.factory.SimpleFactory;
 import com.lin.designpattern.factory.VegetablesFactory;
+import com.lin.designpattern.state.ReboundContext;
+import com.lin.designpattern.state.ReboundSwitch;
 import com.lin.designpattern.strategy.Animal;
 import com.lin.designpattern.strategy.CatBark;
 import com.lin.designpattern.strategy.DogBark;
@@ -132,5 +134,11 @@ public class MainActivity extends AppCompatActivity {
         weapon = new M416Factory().createWeapon();
         amm.printName();
         weapon.printName();
+        // --------------------- 状态模式 --------------------- //
+        Log.d("MainActivity", "状态模式");
+        ReboundContext context = new ReboundSwitch();
+        context.press();
+        context.press();
+        context.press();
     }
 }
